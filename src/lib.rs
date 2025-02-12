@@ -43,18 +43,18 @@ impl<A: Attributes> Shape<A> {
 
 pub struct ShapeBuilder<A: Attributes> {
     shape: Shape<A>,
-    stroke_width: Option<u32>,
+    stroke_width: Option<f32>,
     tolerance: f32,
 }
 
 impl<A: Attributes> ShapeBuilder<A> {
-    pub fn new(shape: Shape<A>, stroke_width: Option<u32>, tolerance: f32) -> Self {
+    pub fn new(shape: Shape<A>, stroke_width: Option<f32>, tolerance: f32) -> Self {
         ShapeBuilder{
             shape, stroke_width, tolerance
         }
     }
     pub fn build<V: Vertex>(self, buffer: &mut VertexBuffers<V, u16>) {
-        match self.stroke_width.map(|u| u as f32) {
+        match self.stroke_width {
             Some(sw) => {
                 let mut tessellator = StrokeTessellator::new();
                 let o = StrokeOptions::default().with_tolerance(self.tolerance).with_line_width(sw);
