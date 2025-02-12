@@ -116,7 +116,7 @@ impl<A: Attributes> ShapeBuilder<A> {
             },
             Shape::Ellipse(a, x, y, xr, yr) => {
                 builder.add_ellipse(
-                    Point::new(x+xr, y+yr),
+                    Point::new(x, y),
                     Vector::new(xr, yr),
                     Angle::radians(0.0),
                     Winding::Positive,

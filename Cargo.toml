@@ -1,6 +1,6 @@
 [package]
 name = "cyat"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 description = "Simplified version of lyon"
 license = "BSD-3-Clause"
