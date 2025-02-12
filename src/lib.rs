@@ -6,7 +6,7 @@ pub use lyon_tessellation::VertexBuffers;
 
 pub trait Attributes: bytemuck::Pod {
     fn from_f32_bytes(bytes: &[f32]) -> Self where Self: Sized {
-        *bytemuck::from_bytes(&bytes.iter().copied().map(|f| f as u8).collect::<Vec<_>>())
+        *bytemuck::from_bytes(&bytes.iter().copied().map(|f| f.round() as u8).collect::<Vec<_>>())
     }
 
     fn to_f32_bytes(&self) -> Vec<f32> {
